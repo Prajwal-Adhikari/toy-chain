@@ -1,0 +1,19 @@
+# Rust build artifacts
+/target/
+
+# Cargo local config (optional)
+/.cargo/
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.bak
