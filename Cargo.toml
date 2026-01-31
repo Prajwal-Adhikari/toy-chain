@@ -1,5 +1,11 @@
 [workspace]
 resolver = "2"
 members = [
-  "crates/mini-node",
-]
+  "bin/mini-node"
+, "crates/rpc-server"]
+
+
+[workspace.dependencies]
+tokio = { version = "1.49.0", features = ["full"] }
+anyhow = "1.0.100"
+jsonrpsee = { version = "0.26.0", features = ["server", "macros"] }

@@ -1,0 +1,9 @@
+[package]
+name = "mini-node"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+rpc-server = {path = "../../crates/rpc-server"}
+tokio.workspace = true
+anyhow.workspace = true
