@@ -1,4 +1,5 @@
 use anyhow::Result;
+use hasher::tx_hash;
 use jsonrpsee::{
     RpcModule,
     server::{ServerBuilder, ServerHandle},
@@ -15,11 +16,12 @@ pub async fn run_http(addr: SocketAddr) -> Result<ServerHandle> {
     module.register_method("ping", |_, _, _| "pong")?;
     module.register_method(
         "submit_transaction",
-        |params, _, _| -> Result<&'static str, ErrorObjectOwned> {
+        |params, _, _| -> Result<String, ErrorObjectOwned> {
             let tx: Transaction = params.one().map_err(|e| {
                 ErrorObjectOwned::owned(ErrorCode::InvalidParams.code(), e.to_string(), None::<()>)
             })?;
-            Ok("accepted")
+            let hash = format!("0x{}", tx_hash(&tx));
+            Ok(hash)
         },
     )?;
 

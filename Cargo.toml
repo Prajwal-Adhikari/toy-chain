@@ -2,7 +2,7 @@
 resolver = "2"
 members = [
   "bin/mini-node"
-, "crates/rpc-server", "crates/types"]
+, "crates/hasher", "crates/rpc-server", "crates/types"]
 
 
 [workspace.dependencies]
@@ -11,3 +11,6 @@ anyhow = "1.0.100"
 jsonrpsee = { version = "0.26.0", features = ["server", "macros"] }
 types ={ path = "./crates/types"}
 serde = { version = "1.0.228", features = ["derive"] }
+blake3 = "1.8.3"
+serde_json = "1.0.149"
+hasher = {path = "./crates/hasher"}
