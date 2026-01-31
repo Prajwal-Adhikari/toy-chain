@@ -9,3 +9,4 @@ tokio.workspace = true
 jsonrpsee.workspace = true
 types.workspace = true
 hasher.workspace = true
+txpool.workspace = true
