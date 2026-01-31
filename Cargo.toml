@@ -2,10 +2,12 @@
 resolver = "2"
 members = [
   "bin/mini-node"
-, "crates/rpc-server"]
+, "crates/rpc-server", "crates/types"]
 
 
 [workspace.dependencies]
 tokio = { version = "1.49.0", features = ["full"] }
 anyhow = "1.0.100"
 jsonrpsee = { version = "0.26.0", features = ["server", "macros"] }
+types ={ path = "./crates/types"}
+serde = { version = "1.0.228", features = ["derive"] }

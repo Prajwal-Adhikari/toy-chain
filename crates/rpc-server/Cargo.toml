@@ -7,3 +7,4 @@ edition = "2024"
 anyhow.workspace = true
 tokio.workspace = true
 jsonrpsee.workspace = true
+types.workspace = true

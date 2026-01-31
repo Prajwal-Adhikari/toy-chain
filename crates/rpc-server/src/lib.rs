@@ -1,9 +1,11 @@
-use anyhow::{Ok, Result};
+use anyhow::Result;
 use jsonrpsee::{
     RpcModule,
     server::{ServerBuilder, ServerHandle},
+    types::{ErrorCode, ErrorObjectOwned},
 };
 use std::net::SocketAddr;
+use types::transaction::Transaction;
 pub struct RpcImpl {}
 
 pub async fn run_http(addr: SocketAddr) -> Result<ServerHandle> {
@@ -11,6 +13,15 @@ pub async fn run_http(addr: SocketAddr) -> Result<ServerHandle> {
 
     let mut module = RpcModule::new(());
     module.register_method("ping", |_, _, _| "pong")?;
+    module.register_method(
+        "submit_transaction",
+        |params, _, _| -> Result<&'static str, ErrorObjectOwned> {
+            let tx: Transaction = params.one().map_err(|e| {
+                ErrorObjectOwned::owned(ErrorCode::InvalidParams.code(), e.to_string(), None::<()>)
+            })?;
+            Ok("accepted")
+        },
+    )?;
 
     let handle = server.start(module);
     Ok(handle)
