@@ -1,5 +1,5 @@
 [package]
-name = "mini-node"
+name = "toy-chain"
 version = "0.1.0"
 edition = "2024"
 
@@ -7,3 +7,4 @@ edition = "2024"
 rpc-server = {path = "../../crates/rpc-server"}
 tokio.workspace = true
 anyhow.workspace = true
+clap.workspace = true

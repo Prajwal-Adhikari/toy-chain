@@ -1,7 +1,7 @@
 [workspace]
 resolver = "2"
 members = [
-  "bin/mini-node"
+  "bin/toy-chain"
 , "crates/hasher", "crates/rpc-server", "crates/txpool", "crates/types"]
 
 
@@ -13,5 +13,6 @@ types ={ path = "./crates/types"}
 serde = { version = "1.0.228", features = ["derive"] }
 blake3 = "1.8.3"
 serde_json = "1.0.149"
+clap = { version = "4.5.57", features = ["derive"] }
 hasher = {path = "./crates/hasher"}
 txpool ={ path = "./crates/txpool"}
